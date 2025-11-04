@@ -13,25 +13,26 @@ karten = [
 
 # --- Session State ---
 if "index" not in st.session_state:
-    st.session_state.index = 0  # Start mit der ersten Karte
+    st.session_state.index = 0
 if "show_answer" not in st.session_state:
     st.session_state.show_answer = False
 
 # --- Anzeige ---
-st.title("Vokabeltrainer / Karteikarten")
+st.title("Client & Candidate Control")
 
 karte = karten[st.session_state.index]
 st.subheader(f"Frage: {karte['frage']}")
 
-# Dynamischer Button
-button_text = "Antwort anzeigen" if not st.session_state.show_answer else "Nächste Karte"
-if st.button(button_text):
+# --- Dynamischer Button und State ---
+button_label = "Antwort anzeigen" if not st.session_state.show_answer else "Nächste Frage"
+
+if st.button(button_label):
     if not st.session_state.show_answer:
         st.session_state.show_answer = True
     else:
-        st.session_state.index = (st.session_state.index + 1) % len(karten)  # nächste Karte, zyklisch
+        st.session_state.index = (st.session_state.index + 1) % len(karten)
         st.session_state.show_answer = False
 
-# Antwort anzeigen
+# Antwort direkt anzeigen, sobald show_answer True ist
 if st.session_state.show_answer:
     st.write(f"**Antwort:** {karte['antwort']}")

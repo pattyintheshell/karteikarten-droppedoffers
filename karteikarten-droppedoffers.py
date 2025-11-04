@@ -17,34 +17,34 @@ if "show_answer" not in st.session_state:
     st.session_state.show_answer = False
 
 # --- CSS Styles für edlen Look ---
-css = '''
-<style>
-/* Hintergrund der App */
-body, .stApp {
-    background-color: #121212;  /* dunkles Anthrazit */
-    color: white;
-}
+css = "<style>" \
+      "body, .stApp { background-color: #121212; color: white; }" \
+      "div.stButton > button { background-color: #facc31; color: white; font-weight: bold; border-radius:5px; height:3em; width:200px; }" \
+      ".karte { background-color:#1f1f1f; color:white; padding:20px; border-radius:10px; margin-bottom:20px; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.2s; }" \
+      ".karte:hover { transform: translateY(-5px); }" \
+      "</style>"
+st.markdown(css, unsafe_allow_html=True)
 
-/* Button-Stil */
-div.stButton > button {
-    background-color: #facc31;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    height: 3em;
-    width: 200px;
-}
+st.title("Candidate & Client Control")
 
-/* Karteikarten-Stil */
-.karte {
-    background-color: #1f1f1f;  /* helleres Grau für die Karten */
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);  /* leichter Schatten für 3D-Effekt */
-    transition: transform 0.2s;  /* sanfte Hover-Animation */
-}
+# --- sichere Karte abrufen ---
+index = st.session_state.index % len(karten)
+karte = karten[index]
 
-/* Hover-Effekt für die Karten */
-.karte:hover {
+# Frage anzeigen
+st.markdown(f"<div class='karte'><b>Frage:</b> {karte['frage']}</div>", unsafe_allow_html=True)
+
+# --- Button-Funktion ---
+def next_card():
+    if not st.session_state.show_answer:
+        st.session_state.show_answer = True
+    else:
+        st.session_state.index = (st.session_state.index + 1) % len(karten)
+        st.session_state.show_answer = False
+
+button_text = "Antwort anzeigen" if not st.session_state.show_answer else "Nächste Frage"
+st.button(button_text, on_click=next_card)
+
+# Antwort anzeigen
+if st.session_state.show_answer:
+    st.markdown(f"<div class='karte'><b>Antwort:</b> {karte['antwort']}</div>", unsafe_allow_html=True)

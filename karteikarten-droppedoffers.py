@@ -30,11 +30,20 @@ st.title("Client & Candidate Control – Karteikarten")
 karte = karten[st.session_state.index]
 st.subheader(karte["frage"])
 
-if not st.session_state.show_answer:
-    if st.button("Antwort anzeigen"):
-        st.session_state.show_answer = True
-else:
+# --- Buttons mit Logik ---
+col1, col2 = st.columns(2)
+
+with col1:
+    if not st.session_state.show_answer:
+        if st.button("Antwort anzeigen"):
+            st.session_state.show_answer = True
+
+with col2:
+    if st.session_state.show_answer:
+        if st.button("Nächste Karte"):
+            st.session_state.index = random.randint(0, len(karten)-1)
+            st.session_state.show_answer = False
+
+# --- Antwort anzeigen ---
+if st.session_state.show_answer:
     st.write(f"**Antwort:** {karte['antwort']}")
-    if st.button("Nächste Karte"):
-        st.session_state.index = random.randint(0, len(karten)-1)
-        st.session_state.show_answer = False

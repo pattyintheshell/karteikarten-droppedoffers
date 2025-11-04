@@ -17,22 +17,24 @@ if "index" not in st.session_state:
 if "show_answer" not in st.session_state:
     st.session_state.show_answer = False
 
-# --- Anzeige ---
-st.title("Client & Candidate Control")
+st.title("Vokabeltrainer / Karteikarten")
 
 karte = karten[st.session_state.index]
 st.subheader(f"Frage: {karte['frage']}")
 
-# --- Dynamischer Button und State ---
-button_label = "Antwort anzeigen" if not st.session_state.show_answer else "Nächste Frage"
+# --- Formular für dynamischen Button ---
+with st.form(key="karte_form"):
+    # Buttontext dynamisch
+    button_label = "Antwort anzeigen" if not st.session_state.show_answer else "Nächste Frage"
+    submitted = st.form_submit_button(button_label)
 
-if st.button(button_label):
-    if not st.session_state.show_answer:
-        st.session_state.show_answer = True
-    else:
-        st.session_state.index = (st.session_state.index + 1) % len(karten)
-        st.session_state.show_answer = False
+    if submitted:
+        if not st.session_state.show_answer:
+            st.session_state.show_answer = True
+        else:
+            st.session_state.index = (st.session_state.index + 1) % len(karten)
+            st.session_state.show_answer = False
 
-# Antwort direkt anzeigen, sobald show_answer True ist
+# Antwort anzeigen
 if st.session_state.show_answer:
     st.write(f"**Antwort:** {karte['antwort']}")

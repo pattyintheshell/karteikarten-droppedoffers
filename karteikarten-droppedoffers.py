@@ -10,13 +10,13 @@ st.markdown("""
 body {
     font-family: 'Helvetica', sans-serif;
     color: #ffffff;          /* Textfarbe */
-    background-color: #06081c; /* Seitenhintergrund */
+    background-color: #000000; /* Seitenhintergrund */
 }
 
 /* Überschriften */
-h1 {font-size: 24px; color: #ffffff;}
-h2 {font-size: 22px; color: #ffffff;}
-h3 {font-size: 20px; color: #ffffff;}
+h1 {font-size: 20px; color: #ffffff;}
+h2 {font-size: 18px; color: #ffffff;}
+h3 {font-size: 16px; color: #ffffff;}
 
 /* Absätze / normale Texte */
 p {font-size: 16px; line-height: 1.5;}

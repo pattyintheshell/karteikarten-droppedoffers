@@ -2,24 +2,46 @@ import streamlit as st
 import json
 import random
 
+# Design
+
 st.markdown("""
 <style>
-h1 {font-family: 'Helvetica'; font-size: 24px;}   /* Titelgröße */
-h2 {font-family: 'Helvetica'; font-size: 20px;}   /* Untertitel */
-h3 {font-family: 'Helvetica'; font-size: 20px;}
-p  {font-family: 'Helvetica'; font-size: 16px;}   /* normale Texte */
+/* Allgemeine Schriftart & Farbe */
+body {
+    font-family: 'Helvetica', sans-serif;
+    color: #ffffff;          /* Textfarbe */
+    background-color: #06081c; /* Seitenhintergrund */
+}
 
+/* Überschriften */
+h1 {font-size: 24px; color: #ffffff;}
+h2 {font-size: 22px; color: #ffffff;}
+h3 {font-size: 20px; color: #ffffff;}
+
+/* Absätze / normale Texte */
+p {font-size: 16px; line-height: 1.5;}
+
+/* Karteikarten-Fragen / Antworten extra */
+.stMarkdown p {font-size: 18px; color: #333333;}
+
+/* Buttons */
 .stButton>button {
-    background-color: #FACC31;
-    color: black;
+    background-color: #2C5E9E;
+    color: white;
+    font-family: 'Helvetica';
+    font-size: 18px;
+    font-weight: bold;
     border-radius: 10px;
     padding: 0.5em 1.5em;
-    font-weight: bold;
-    font-size: 16px;  /* Schriftgröße der Buttons */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+}
+.stButton>button:hover {
+    background-color: #1B3C70;
+    cursor: pointer;
 }
 </style>
 """, unsafe_allow_html=True)
-
 
 # Karteikarten
 karten = [

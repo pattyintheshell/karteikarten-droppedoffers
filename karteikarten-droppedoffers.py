@@ -17,8 +17,7 @@ if "show_answer" not in st.session_state:
     st.session_state.show_answer = False
 
 # --- Styles ---
-st.markdown(
-"""
+css = """
 <style>
 body, .stApp {
     background-color: black;
@@ -35,4 +34,33 @@ div.stButton > button {
 .karte {
     background-color: #1a1a1a;
     color: white;
-    p
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+</style>
+"""
+st.markdown(css, unsafe_allow_html=True)
+
+st.title("Candidate & Client Control")
+
+# --- sichere Karte abrufen ---
+index = st.session_state.index % len(karten)
+karte = karten[index]
+
+st.markdown(f"<div class='karte'><b>Frage:</b> {karte['frage']}</div>", unsafe_allow_html=True)
+
+# --- Button-Funktion ---
+def next_card():
+    if not st.session_state.show_answer:
+        st.session_state.show_answer = True
+    else:
+        st.session_state.index = (st.session_state.index + 1) % len(karten)
+        st.session_state.show_answer = False
+
+button_text = "Antwort anzeigen" if not st.session_state.show_answer else "Nächste Frage"
+st.button(button_text, on_click=next_card)
+
+# Antwort anzeigen
+if st.session_state.show_answer:
+    st.markdown(f"<div class='karte'><b>Antwort:</b> {karte['antwort']}</div>", unsafe_allow_html=True)

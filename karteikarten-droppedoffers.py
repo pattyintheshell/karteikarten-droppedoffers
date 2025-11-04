@@ -1,28 +1,47 @@
 import streamlit as st
-import json
 import random
 
-# Design
-
+# --- CSS Styling ---
 st.markdown("""
 <style>
-/* Allgemeine Schriftart & Farbe */
 body {
+    background-color: #000000;  /* Seitenhintergrund */
     font-family: 'Helvetica', sans-serif;
-    color: #ffffff;          /* Textfarbe */
-    background-color: #000000; /* Seitenhintergrund */
 }
 
-/* Überschriften */
-h1 {font-size: 20px; color: #ffffff;}
-h2 {font-size: 18px; color: #ffffff;}
-h3 {font-size: 16px; color: #ffffff;}
+/* Titel der Seite */
+.custom-title {
+    font-size: 32px;
+    color: #42c41d;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
 
-/* Absätze / normale Texte */
-p {font-size: 16px; line-height: 1.5;}
+/* Karteikarte Box */
+.card {
+    background-color: #1c1c1c;   /* dunkle Box */
+    border-radius: 15px;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
 
-/* Karteikarten-Fragen / Antworten extra */
-.stMarkdown p {font-size: 18px; color: ##42c41d;}
+/* Frage innerhalb der Karte */
+.card .question {
+    font-size: 22px;
+    color: #facc31;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Antwort innerhalb der Karte */
+.card .answer {
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 1.5;
+    margin-top: 10px;
+}
 
 /* Buttons */
 .stButton>button {
@@ -35,6 +54,7 @@ p {font-size: 16px; line-height: 1.5;}
     padding: 0.5em 1.5em;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     transition: all 0.2s ease;
+    margin-top: 10px;
 }
 .stButton>button:hover {
     background-color: #c9a326;
@@ -43,7 +63,7 @@ p {font-size: 16px; line-height: 1.5;}
 </style>
 """, unsafe_allow_html=True)
 
-# Karteikarten
+# --- Karteikarten ---
 karten = [
     {"frage": "Quali: Der Kandidat sagt, er will wechseln, weil es seinem aktuellen Arbeitgeber wirtschaftlich schlecht geht. Was gibt es zu beachten?", 
      "antwort": "Nach einem möglichen Abfindungsprogramm / Freiwilligenprogramm fragen"},
@@ -53,24 +73,32 @@ karten = [
      "antwort": "Betriebsjahre × Monatsgehalt (Faktor 0,5–1,5)"}
 ]
 
-# Zufällige Karte merken
+# --- Session State ---
 if "index" not in st.session_state:
     st.session_state.index = random.randint(0, len(karten)-1)
 if "show_answer" not in st.session_state:
     st.session_state.show_answer = False
 
-st.title("Client & Candidate Control – Karteikarten")
+# --- Anzeige ---
+st.markdown("<div class='custom-title'>Client & Candidate Control – Karteikarten</div>", unsafe_allow_html=True)
 
 karte = karten[st.session_state.index]
-st.subheader(karte["frage"])
 
+# Karteikarte mit Frage
+st.markdown(f"""
+<div class='card'>
+    <div class='question'>{karte['frage']}</div>
+    {"<div class='answer'><b>Antwort:</b> " + karte['antwort'] + "</div>" if st.session_state.show_answer else ""}
+</div>
+""", unsafe_allow_html=True)
+
+# Buttons
 if not st.session_state.show_answer:
     if st.button("Antwort anzeigen"):
         st.session_state.show_answer = True
-        st.rerun()
+        st.experimental_rerun()
 else:
-    st.write(f"**Antwort:** {karte['antwort']}")
     if st.button("Nächste Karte"):
         st.session_state.index = random.randint(0, len(karten)-1)
         st.session_state.show_answer = False
-        st.rerun()
+        st.experimental_rerun()

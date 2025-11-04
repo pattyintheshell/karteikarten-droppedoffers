@@ -17,7 +17,8 @@ if "show_answer" not in st.session_state:
     st.session_state.show_answer = False
 
 # --- Styles ---
-st.markdown("""
+st.markdown(
+"""
 <style>
 body, .stApp {
     background-color: black;
@@ -25,4 +26,13 @@ body, .stApp {
 }
 div.stButton > button {
     background-color: #facc31;
-    color: whi
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 3em;
+    width: 200px;
+}
+.karte {
+    background-color: #1a1a1a;
+    color: white;
+    p

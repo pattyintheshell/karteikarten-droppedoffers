@@ -16,10 +16,11 @@ if "index" not in st.session_state:
 if "show_answer" not in st.session_state:
     st.session_state.show_answer = False
 
-# --- CSS Styles für edlen Look + Fade-In ---
+# --- CSS Styles für edlen Look + Fade-In + Button-Hover ---
 css = "<style>" \
       "body, .stApp { background-color: #121212; color: white; }" \
-      "div.stButton > button { background-color: #facc31; color: white; font-weight: bold; border-radius:5px; height:3em; width:200px; }" \
+      "div.stButton > button { background-color: #facc31; color: white; font-weight: bold; border-radius:5px; height:3em; width:200px; transition: background-color 0.2s; }" \
+      "div.stButton > button:hover { background-color: #e6b800; }" \
       ".frage { background-color:#2b2b2b; color:white; padding:20px; border-radius:10px; margin-bottom:20px; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.2s; }" \
       ".antwort { background-color:#181818; color:white; padding:20px; border-radius:10px; margin-bottom:20px; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.2s, opacity 0.5s; opacity:0; animation: fadein 0.5s forwards; }" \
       ".frage:hover, .antwort:hover { transform: translateY(-5px); }" \

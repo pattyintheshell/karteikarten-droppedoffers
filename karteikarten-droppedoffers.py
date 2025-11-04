@@ -22,18 +22,17 @@ st.title("Vokabeltrainer / Karteikarten")
 karte = karten[st.session_state.index]
 st.subheader(f"Frage: {karte['frage']}")
 
-# --- Formular für dynamischen Button ---
-with st.form(key="karte_form"):
-    # Buttontext dynamisch
-    button_label = "Antwort anzeigen" if not st.session_state.show_answer else "Nächste Frage"
-    submitted = st.form_submit_button(button_label)
+# --- Buttonlogik ---
+def button_action():
+    if not st.session_state.show_answer:
+        st.session_state.show_answer = True
+    else:
+        st.session_state.index = (st.session_state.index + 1) % len(karten)
+        st.session_state.show_answer = False
 
-    if submitted:
-        if not st.session_state.show_answer:
-            st.session_state.show_answer = True
-        else:
-            st.session_state.index = (st.session_state.index + 1) % len(karten)
-            st.session_state.show_answer = False
+# Button-Text dynamisch
+button_text = "Antwort anzeigen" if not st.session_state.show_answer else "Nächste Frage"
+st.button(button_text, on_click=button_action)
 
 # Antwort anzeigen
 if st.session_state.show_answer:

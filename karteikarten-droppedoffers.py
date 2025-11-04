@@ -10,8 +10,8 @@ h3 {font-family: 'Helvetica'; font-size: 20px;}
 p  {font-family: 'Helvetica'; font-size: 16px;}   /* normale Texte */
 
 .stButton>button {
-    background-color: #F0EFE8;
-    color: FACC31;
+    background-color: #FACC31;
+    color: black;
     border-radius: 10px;
     padding: 0.5em 1.5em;
     font-weight: bold;

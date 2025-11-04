@@ -17,7 +17,7 @@ if "index" not in st.session_state:
 if "show_answer" not in st.session_state:
     st.session_state.show_answer = False
 
-st.title("Vokabeltrainer / Karteikarten")
+st.title("Candidate & Client Control")
 
 karte = karten[st.session_state.index]
 st.subheader(f"Frage: {karte['frage']}")

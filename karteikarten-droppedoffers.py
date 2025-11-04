@@ -22,11 +22,11 @@ h3 {font-size: 20px; color: #ffffff;}
 p {font-size: 16px; line-height: 1.5;}
 
 /* Karteikarten-Fragen / Antworten extra */
-.stMarkdown p {font-size: 18px; color: #333333;}
+.stMarkdown p {font-size: 18px; color: ##42c41d;}
 
 /* Buttons */
 .stButton>button {
-    background-color: #2C5E9E;
+    background-color: #facc31;
     color: white;
     font-family: 'Helvetica';
     font-size: 18px;
@@ -37,7 +37,7 @@ p {font-size: 16px; line-height: 1.5;}
     transition: all 0.2s ease;
 }
 .stButton>button:hover {
-    background-color: #1B3C70;
+    background-color: #c9a326;
     cursor: pointer;
 }
 </style>

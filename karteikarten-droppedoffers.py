@@ -16,7 +16,7 @@ if "index" not in st.session_state:
 if "show_answer" not in st.session_state:
     st.session_state.show_answer = False
 
-# --- CSS Styles für edlen Look + Fade-In + Button-Hover ---
+# --- CSS Styles für edlen Look + Fade-In + Button-Hover + Label ---
 css = "<style>" \
       "body, .stApp { background-color: #121212; color: white; }" \
       "div.stButton > button { background-color: #facc31; color: white; font-weight: bold; border-radius:5px; height:3em; width:200px; transition: background-color 0.2s; }" \
@@ -24,6 +24,7 @@ css = "<style>" \
       ".frage { background-color:#2b2b2b; color:white; padding:20px; border-radius:10px; margin-bottom:20px; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.2s; }" \
       ".antwort { background-color:#181818; color:white; padding:20px; border-radius:10px; margin-bottom:20px; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.2s, opacity 0.5s; opacity:0; animation: fadein 0.5s forwards; }" \
       ".frage:hover, .antwort:hover { transform: translateY(-5px); }" \
+      "b.label { font-size: 1.2em; font-weight: 900; color: #facc31; }" \
       "@keyframes fadein { from {opacity:0;} to {opacity:1;} }" \
       "</style>"
 st.markdown(css, unsafe_allow_html=True)
@@ -35,7 +36,7 @@ index = st.session_state.index % len(karten)
 karte = karten[index]
 
 # Frage anzeigen
-st.markdown(f"<div class='frage'><b>Frage:</b> {karte['frage']}</div>", unsafe_allow_html=True)
+st.markdown(f"<div class='frage'><b class='label'>Frage:</b> {karte['frage']}</div>", unsafe_allow_html=True)
 
 # --- Button-Funktion ---
 def next_card():
@@ -50,4 +51,4 @@ st.button(button_text, on_click=next_card)
 
 # Antwort anzeigen
 if st.session_state.show_answer:
-    st.markdown(f"<div class='antwort'><b>Antwort:</b> {karte['antwort']}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='antwort'><b class='label'>Antwort:</b> {karte['antwort']}</div>", unsafe_allow_html=True)

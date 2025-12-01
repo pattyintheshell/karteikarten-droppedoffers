@@ -14,7 +14,7 @@ karten = [
     {"frage": "Der Kandidat hat in der Quali gesagt, sein Traumjob ist in der Medizintechnik. Er hatte nun ein Final bei deinem Kunden aus einer anderen Branche. Zudem hat er noch andere Prozesse (nicht über uns) in der Medizintechnik, die noch ganz am Anfang sind. Der Kandidat sagt nach dem Final mit deinem Kunden, er fand das Gespräch gut, scheint aber nicht 100% begeistert. Was tun?",
      "antwort": "Den Kandidaten ehrlich fragen: Wenn er seine anderen Prozesse nicht hätte, würde er es dann machen wollen? // Herausfinden, ob es nur ein Plan B oder Backup ist"},
     {"frage": "Der Kunde will das Angebot unbedingt selbst an den Kandidaten schicken oder es ist aus Datenschutzgründen o.ä. nicht möglich, dies über uns zu machen. Was tun?",
-     "antwort": "Den Kunden überzeugen, das Offer zumindest erst nach Absprache mit uns zu versenden. // Zudem erfragen: Gibt es etwas im Vertrag, was Erklärungsbedarf braucht? (Überstundenregelung, Urlaubstage, Jobtitel, Homeoffice)"}
+     "antwort": "Den Kunden überzeugen, das Offer zumindest erst nach Absprache mit uns zu versenden. // Zudem erfragen: Gibt es etwas im Vertrag, was Erklärungsbedarf braucht? (Überstundenregelung, Urlaubstage, Jobtitel, Homeoffice)"},
     {"frage": "Welche Infos solltest du bei der Quali unbedingt abfragen?",
      "antwort": "Push & Pull Factors, andere Prozesse, Standort/Umzug/Pendeln/Homeoffice/Familie, Gegenangebote, Exclusivity"},
     {"frage": "Wie gehst du mit Kandidaten um, die mehrere Prozesse parallel laufen haben?",
@@ -24,7 +24,6 @@ karten = [
     {"frage": "Wann sollte das Thema Counter Offer angesprochen werden?",
      "antwort": "Bereits in der Quali"}
 ]
-
 
 # --- Session State für zufällige Reihenfolge ---
 if "order" not in st.session_state:

@@ -20,7 +20,7 @@ karten = [
     {"frage": "Wie gehst du mit Kandidaten um, die mehrere Prozesse parallel laufen haben?",
      "antwort": "Fear of Loss, transparente Kommunikation an den Kunden, andere Kandidaten einsellen, durch Exclusivity vorbeugen"},
     {"frage": "Was sind Argumente dagegen, auf ein Gegenangebot einzugehen?",
-     "antwort": "Die eigentlichen Gründe der Unzufriedenheit ändern sich nicht (Push Factors aus der Quali) // Die meisten, die darauf eingehen, sind nach ein paar Monaten wieder offen // Versprechungen in der Hitze des Gefechts, die nicht gehalten werden können // Loyalität wird infrage gestellt, der erste auf der „Abschussliste“ bei finanziellen Probleme // ist nur eine Panikhandlung vom Arbeitgeber, da Nachbesetzung und unbesetzte Stellen sehr teuer"},
+     "antwort": "Die eigentlichen Gründe der Unzufriedenheit ändern sich nicht (Push Factors aus der Quali) // Die meisten, die darauf eingehen, sind nach ein paar Monaten wieder offen // Versprechungen in der Hitze des Gefechts, die nicht gehalten werden können // Loyalität wird infrage gestellt, der erste auf der „Abschussliste“ bei finanziellen Problemen der Firma // Ist nur eine Panikhandlung vom Arbeitgeber, da Nachbesetzung und unbesetzte Stellen sehr teuer"},
     {"frage": "Wann sollte das Thema Counter Offer angesprochen werden?",
      "antwort": "Bereits in der Quali"}
 ]

@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 
-# --- Karteikarten ---
+# --- Karteikarten (unverändert) ---
 karten = [
     {"frage": "Quali: Der Kandidat sagt, er will wechseln, weil es seinem aktuellen Arbeitgeber wirtschaftlich schlecht geht. Was gibt es zu beachten?",
      "antwort": "Nach einem möglichen Abfindungsprogramm / Freiwilligenprogramm fragen"},
@@ -26,11 +26,9 @@ karten = [
 ]
 
 # --- Session State für zufällige Reihenfolge ---
-if "order" not in st.session_state:
+if "order" not in st.session_state or "pos" not in st.session_state:
     st.session_state.order = list(range(len(karten)))
     random.shuffle(st.session_state.order)
-
-if "pos" not in st.session_state:
     st.session_state.pos = 0
 
 if "show_answer" not in st.session_state:
@@ -102,6 +100,11 @@ st.markdown(css, unsafe_allow_html=True)
 st.title("Candidate & Client Control")
 
 # --- aktuelle Karte holen ---
+if st.session_state.pos >= len(karten):
+    st.session_state.pos = 0
+    st.session_state.order = list(range(len(karten)))
+    random.shuffle(st.session_state.order)
+
 current_index = st.session_state.order[st.session_state.pos]
 karte = karten[current_index]
 
@@ -119,7 +122,7 @@ def next_card():
         st.session_state.show_answer = False
         st.session_state.pos += 1
 
-        # Deck komplett durch → neu mischen
+        # Wenn am Ende → neu mischen
         if st.session_state.pos >= len(karten):
             st.session_state.pos = 0
             st.session_state.order = list(range(len(karten)))
